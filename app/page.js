@@ -1,6 +1,6 @@
 import Results from "@/components/Results";
 
-const API_KEY = process.env.API_KEY
+const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY
 export default async function page({ searchParams }) {
   const getMoviesUrl = (genre) => {
     if (genre === "fetchTopRated") {

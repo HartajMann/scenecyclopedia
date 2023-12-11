@@ -6,16 +6,16 @@ import React from 'react'
 const MoviePage = async ({ params }) => {
     const movieId = params.id;
     //get movie
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.API_KEY}`)
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`)
     const movie = await res.json()
 
     //get trailer
-    const trailerRes = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.API_KEY}`);
+    const trailerRes = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`);
     const trailerData = await trailerRes.json();
     const youtubeTrailer = trailerData.results.find(video => video.site === "YouTube" && video.type === "Trailer");
 
     //get cast
-    const castRes = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.API_KEY}`);
+    const castRes = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`);
     const castData = await castRes.json();
 
     const castMembers = castData.cast.slice(0, 5);
